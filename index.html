@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flower</title>
+</head>
+<body style="margin-left: 100px">
+<div style="text-align: center">
+    <canvas id="c"></canvas>
+</div>
+</body>
+<script>
+    function surface(a,b) {
+        var x=a*100,
+            y=b*100,
+            radius=50;
+        if((x-radius)*(x-radius)+(y-radius)*(y-radius)<radius*radius){
+            return{
+                x:x,
+                y:y*(1+b)/2,
+                r: 100 + Math.floor((1 - b) * 155), // 添加梯度
+                g: 60 + Math.floor((1 - b) * 155),
+                b: 50
+            };
+        }else {
+            return null;
+        }
+    }
+    var canvas = document.body.appendChild(document.createElement("canvas"));
+    var context = canvas.getContext("2d");
+    var a,b,position;
+    for(a=0;a<1;a+=.001){
+        for(b=0;b<1;b+=.001){
+            if(position = surface(a,b)){
+                context.fillStyle = "rgb("+position.r+","+position.g+","+position.b+")";
+                context.fillRect(position.x,position.y,1,1)
+            }
+
+        }
+
+    }
+</script>
+</html>

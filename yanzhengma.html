@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="con" width="100px" height="40px" style="border: solid #666 1px"></canvas>
+</body>
+<script>
+    var con = document.getElementById("con");
+    var drow = con.getContext("2d");
+console.log(drow);
+    drow.lineCap="round";
+color=["#555","#900","#009","#090"];
+    for(var i=0;i<10;i++){
+        var r=Math.floor(Math.random()*4);
+        drow.strokeStyle=color[r];
+        var x0 =Math.random()*100;
+        var y0 = Math.random()*40;
+        var x1 =Math.random()*100;
+        var y1 = Math.random()*40;
+        console.log(r);
+        drow.moveTo(x0,y0);
+        drow.lineTo(x1,y1);
+        drow.stroke();
+
+    }
+    drow.font="#f00";
+    drow.fillText("5630",20,20);
+
+</script>
+</html>
