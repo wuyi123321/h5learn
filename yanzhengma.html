@@ -13,21 +13,40 @@
 console.log(drow);
     drow.lineCap="round";
 color=["#555","#900","#009","#090"];
-    for(var i=0;i<10;i++){
+    for(var i=0;i<20;i++){
+        drow.beginPath()
         var r=Math.floor(Math.random()*4);
         drow.strokeStyle=color[r];
         var x0 =Math.random()*100;
         var y0 = Math.random()*40;
         var x1 =Math.random()*100;
         var y1 = Math.random()*40;
-        console.log(r);
         drow.moveTo(x0,y0);
         drow.lineTo(x1,y1);
         drow.stroke();
-
     }
-    drow.font="#f00";
-    drow.fillText("5630",20,20);
+    for(var i=0;i<40;i++){
+        drow.beginPath();
+        var r=Math.floor(Math.random()*4);
+        var x0 =Math.random()*100;
+        var y0 = Math.random()*40;
+        drow.arc(x0,y0,1,0,2*Math.PI,true);
+        drow.fillStyle=color[r];
+        drow.fill();
+    }
+
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var x0=0;
+        for( var i=0; i < 6; i++ ){
+            x0+=12;
+            var text = possible.charAt(Math.floor(Math.random() * possible.length));
+            drow.beginPath();
+            drow.font="20px Arial";
+            drow.fillStyle=color[r];
+            drow.fillText(text,x0,30);
+        }
+
+
 
 </script>
 </html>

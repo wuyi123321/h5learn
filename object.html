@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" style="border: solid #eee 1px"></canvas>
+</body>
+<script type="text/javascript">
+    var wid=400;
+    var heig=400;
+    var canvas=document.getElementById("canvas");
+    canvas.height=heig;
+    canvas.width=wid;
+    var draw=canvas.getContext("2d");
+    var x=20;
+    var y=20;
+    var vy=0;
+    var vx=1;
+    function rendr(){
+        draw.clearRect(0,0,wid,heig);
+        draw.beginPath();
+        draw.arc(x,y,10,0,2*Math.PI,false);
+        draw.fill();
+    }
+    function update() {
+        vy+=0.7;
+        x=x+vx;
+        y=y+vy;
+        if(y+10>=heig-1){
+            vy=-0.7*vy;
+        }
+
+    }
+setInterval(function () {
+    rendr();
+    update();
+},50);
+// function people(name,age) {
+//       this.name=name;
+//       this.age=age;
+//   }
+//  people.prototype.showage=function () {
+//       alert(this.age);
+//   };
+//   window.onload=function () {
+//       var july=new people("july",20);
+//       july.showage();
+//   }
+
+</script>
+</html>
